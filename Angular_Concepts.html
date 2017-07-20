@@ -28,7 +28,7 @@
             <tbody>
               <tr ng-repeat="employee in employees | limitTo:rowlimit | filter:searchtext | orderBy:'name'">
                 <td>{{employee.name}}</td>
-                <td>{{employee.gender}}</td>
+                <td>{{employee.gender | gender}}</td>
                 <td>{{employee.National_ID}}</td>
                 <td>{{employee.likes}}</td>
                 <td>{{employee.Dislikes}}</td>
