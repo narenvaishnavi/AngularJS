@@ -10,6 +10,7 @@
   <body ng-app="mymodule" class="alignment">
       <div ng-include="'welcome.html'"></div>
       <div ng-controller = "tablecontroller">
+        <div my-Directive></div>
         Table:<input type="checkbox" ng-model="showTable"/>
         List:<input type="checkbox" ng-model="showList"/><br/><br/>
         <div ng-show="showTable">
