@@ -45,7 +45,18 @@ app.controller('tablecontroller', function($scope,$http,$log, ajaxService) {
             scope.errormessage = "";
     }
         
-       
+       $scope.updateTime = function() {
+            $scope.data.time = new Date();
+        }
+          
+      //$digest()
+        document.getElementById("updateTimeButton")
+                .addEventListener('click', function() {
+            console.log("update time clicked");
+            $scope.data.time = new Date();
+            $scope.$digest();
+        });
+         
    
 
 });
