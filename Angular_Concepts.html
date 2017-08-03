@@ -9,10 +9,11 @@
     <script src="js/filter.js"></script>
     <script src="js/AjaxService.js"></script>
     <script src="js/CustomDirective.js"></script>
+    <script src="js/d3.js"></script>
     <link href="css/mystyles.css" rel="stylesheet">
   </head>
-  <body ng-app="mymodule" class="alignment">
-      
+  <body ng-app="mymodule" class="alignment" onload="myFunction()">
+      <div id = "ddd"  style="height:410px;"></div>
       <div ng-include="'welcome.html'"></div>
       <div ng-controller = "tablecontroller">
         <div my-Directive></div>
