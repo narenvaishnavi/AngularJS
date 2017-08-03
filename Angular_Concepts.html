@@ -1,13 +1,18 @@
-
 <!doctype html>
 <html>
   <head>
     <title>My AngularJS App</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="js/Table.js"></script>
+    <script src="js/filter.js"></script>
+    <script src="js/AjaxService.js"></script>
+    <script src="js/CustomDirective.js"></script>
     <link href="css/mystyles.css" rel="stylesheet">
   </head>
   <body ng-app="mymodule" class="alignment">
+      
       <div ng-include="'welcome.html'"></div>
       <div ng-controller = "tablecontroller">
         <div my-Directive></div>
@@ -29,7 +34,7 @@
             <tbody>
               <tr ng-repeat="employee in employees | limitTo:rowlimit | filter:searchtext | orderBy:'name'">
                 <td>{{employee.name}}</td>
-                <td>{{employee.gender | gender}}</td>
+                <td>{{employee.gender | gender }}</td>
                 <td>{{employee.National_ID}}</td>
                 <td>{{employee.likes}}</td>
                 <td>{{employee.Dislikes}}</td>
@@ -42,16 +47,28 @@
           </table>
         </div>
         <div ng-show="showList">
-            <ul>
-              <li ng-repeat="employee in employees">
-               {{employee.name}}   
+            <ol>
+              <li ng-repeat="employee in info"> 
+               {{employee.Name}}   
                 <ul>
-                   <li>{{employee.gender}}</li>
-                   <li>{{employee.National_ID}}</li>
+                   <li>{{employee.City}}</li>
+                   <li>{{employee.Country}}</li>
                 </ul> 
             </li>
-            </ul>
+            </ol>
         </div>
+      
+      <button ng-show ="showList" id="bottom" ng-click ="scroll('top')" class="btn btn-primary" > Go to top</button>
+      
+      
+      <div>
+           {{data.time}}
+
+    <br/>
+    <button ng-click="updateTime()">update time - ng-click</button>
+    <button id="updateTimeButton"  >update time</button>
       </div>
-  </body>
+      </div>
+     
+    </body>
 </html>
