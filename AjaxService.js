@@ -1,6 +1,7 @@
 app.factory('ajaxService',function(){
     return {
         ajaxCall: function($scope,$http,$log,type,url){
+        $scope.loading = true;
         if(type == "GET"){
             $http({
             method : type,
@@ -12,7 +13,11 @@ app.factory('ajaxService',function(){
                     $scope.info = response.data.records;
             }, function errorHandler(response) {
               $scope.myWelcome = response.statusText;
-          });
+          })
+        .finally(function () {
+            // Hide loading spinner whether our call succeeded or failed.
+              $scope.loading = false;
+            });
         }
         else if(type == "POST"){
             $http({
@@ -24,8 +29,15 @@ app.factory('ajaxService',function(){
                   $scope.formdata = response.data;
                 }, function errorHandler(response) {
                   $scope.myWelcome = response.statusText;
-              });
+              })
+            .finally(function () {
+            // Hide loading spinner whether our call succeeded or failed.
+              $scope.loading = false;
+            });
         }
         }       
     };
+    
+ 
 });
+
